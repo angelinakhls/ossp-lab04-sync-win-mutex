@@ -1,0 +1,4 @@
+@echo off
+rem Simple invocation placeholder for Windows test execution.
+lab04_sync.exe --timeout 10
+lab04_sync.exe --timeout 100

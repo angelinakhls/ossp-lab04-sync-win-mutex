@@ -1,0 +1,18 @@
+@startuml
+actor User
+rectangle "Shared Memory" as SHM
+rectangle "Named Mutex" as MUTEX
+rectangle "Owner Process" as OWNER
+rectangle "Client 1" as C1
+rectangle "Client 2" as C2
+
+User --> OWNER
+User --> C1
+User --> C2
+OWNER --> MUTEX
+C1 --> MUTEX
+C2 --> MUTEX
+OWNER --> SHM
+C1 --> SHM
+C2 --> SHM
+@enduml
