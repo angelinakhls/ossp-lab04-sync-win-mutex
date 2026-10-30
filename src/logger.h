@@ -91,7 +91,9 @@ SharedData* SharedMemory::Data() {
 bool SharedMemory::IsConsistent() const {
     if (data_ == nullptr) return false;
     if (data_->corruptedFlag != 0) return false;
-    if (data_->valueA == data_->valueB && data_->valueB == data_->valueC) return true;
+    if (data_->valueA == data_->valueB && data_->valueB == data_->valueC) {
+        return true;
+    }
     return ((data_->valueA + data_->valueB + data_->valueC) % 3 == 0);
 }
 

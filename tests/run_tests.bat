@@ -1,6 +1,5 @@
-#include <iostream>
-
-int main() {
-    std::cout << "Invariant checks placeholder." << std::endl;
-    return 0;
-}
+@echo off
+rem Simple Windows batch helper for experiment execution
+setlocal
+lab04_sync.exe --timeout 10
+lab04_sync.exe --timeout 100

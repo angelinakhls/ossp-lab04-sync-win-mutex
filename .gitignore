@@ -12,5 +12,9 @@ Release/
 *.exe
 *.ilk
 *.log
+*.tlog
+*.idb
+*.aps
 __pycache__/
 *.pyc
+.DS_Store

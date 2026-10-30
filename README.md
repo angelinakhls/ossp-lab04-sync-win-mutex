@@ -1,39 +1,46 @@
-# OSSP Lab 04 - Windows synchronization
+# Лабораторная работа 4
+## Вариант 28. Тайм-аут и аварийное освобождение Mutex
 
-This repository contains a Windows API modeling solution for Lab 04.
+Описание проекта:
+- три процесса работают с общим блоком памяти;
+- один процесс удерживает mutex на 50 мс;
+- остальные процессы пытаются получить доступ с тайм-аутом;
+- реализованы обработка WAIT_TIMEOUT, WAIT_ABANDONED, восстановление данных после аварии;
+- выполняется логирование и проверка инвариантов.
 
-Variant: 28. Timeout and emergency release of Mutex.
+Папки:
+- src/ — исходный код;
+- tests/ — проверки корректности;
+- data/ — результаты экспериментов;
+- scripts/ — построение графиков;
+- diagrams/ — схемы и последовательности;
+- report/ — отчет и приложение об использовании ИИ.
 
-## Purpose
-The solution models three processes sharing a common memory block protected by a named Mutex. One process temporarily owns the mutex for 50 ms, while the others attempt acquisition with timeouts.
+## Требования к среде
+- Windows 10/11
+- Visual Studio 2022 или CMake 3.16+
+- компилятор C++17
+- Windows SDK
 
-## Features
-- Shared Memory
-- Named Mutex
-- WaitForSingleObject with timeout handling
-- Detection of WAIT_TIMEOUT and WAIT_ABANDONED
-- Shared data consistency checks
-- Recovery after abandoned ownership
-- Event logging and statistical summary
-
-## Build
-Use Visual Studio 2022 or CMake:
-
+## Сборка через CMake
 ```powershell
 cmake -S . -B build
 cmake --build build --config Release
 ```
 
-## Run
+## Запуск
 ```powershell
 ./build/Release/lab04_sync.exe --timeout 10
 ./build/Release/lab04_sync.exe --timeout 100
 ```
 
-## Structure
-- src/ source code
-- tests/ invariant checks and execution helpers
-- data/ experiment logs
-- scripts/ plotting scripts
-- diagrams/ diagrams in PlantUML
-- report/ final report text
+## Что моделируется
+- Shared Memory для общей структуры данных;
+- named Mutex для многопроцессного контроля доступа;
+- owner process с удержанием mutex 50 ms;
+- два client-процесса с тайм-аутом;
+- аварийный выход owner process с последующим WAIT_ABANDONED;
+- проверка корректности данных и восстановление.
+
+## Результаты
+Эксперименты проводятся как минимум 3 раза для каждого тайм-аута и сохраняются в `data/experiment_results.csv`.

@@ -1,3 +1,17 @@
-config_name,timeout_ms,run1_ms,run2_ms,run3_ms,avg_time_ms,timeouts,abandoned,successful
-std_10,10,120,118,123,120.33,220,5,780
-std_100,100,95,97,96,96.00,50,1,950
+import csv
+import matplotlib.pyplot as plt
+
+with open('../data/experiment_results.csv', newline='') as f:
+    reader = csv.DictReader(f)
+    rows = list(reader)
+
+x = [int(r['timeout_ms']) for r in rows]
+y = [float(r['avg_time_ms']) for r in rows]
+
+plt.figure(figsize=(10, 5))
+plt.plot(x, y, marker='o', color='royalblue')
+plt.title('Average execution time vs timeout')
+plt.xlabel('Timeout (ms)')
+plt.ylabel('Average time (ms)')
+plt.grid(True)
+plt.show()
