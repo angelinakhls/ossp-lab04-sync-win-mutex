@@ -1,0 +1,13 @@
+
+===== RESULT (config=Q_norecover run=3) =====
+timeout=100 ms  ops/worker=100  hold=50 ms  crash=1  no-sync=0  no-recover=1  seed=1
+elapsed             : 324 ms
+holder holds        : 2
+workers success     : 38 (P2=19, P3=19)
+workers attempts    : 79
+WAIT_TIMEOUT        : 0
+WAIT_ABANDONED      : 1
+recoveries          : 1   refused (structure unusable): 40
+avg wait (workers)  : 3.801 ms   max wait: 49.547 ms
+final counter       : 41   expected: 40
+INVARIANT VIOLATIONS: 0   => PASS

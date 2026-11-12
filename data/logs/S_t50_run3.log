@@ -1,0 +1,13 @@
+
+===== RESULT (config=S_t50 run=3) =====
+timeout=50 ms  ops/worker=100  hold=50 ms  crash=0  no-sync=0  no-recover=0  seed=1
+elapsed             : 1024 ms
+holder holds        : 10
+workers success     : 200 (P2=100, P3=100)
+workers attempts    : 204
+WAIT_TIMEOUT        : 4
+WAIT_ABANDONED      : 0
+recoveries          : 0   refused (structure unusable): 0
+avg wait (workers)  : 5.028 ms   max wait: 50.597 ms
+final counter       : 210   expected: 210
+INVARIANT VIOLATIONS: 0   => PASS

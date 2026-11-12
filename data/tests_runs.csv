@@ -1,0 +1,8 @@
+config,run,timeout_ms,ops,seed,hold_ms,crash,no_sync,no_recover,elapsed_ms,holder_holds,w_success,w_attempts,w_timeouts,w_abandoned,recoveries,blocked,avg_wait_ms,max_wait_ms,final_counter,expected_counter,violations,invariants_ok,max_time_exceeded
+T1_timeout10,1,10,50,12058,50,0,0,0,615,6,100,140,40,0,0,0,3.615,11.028,106,106,0,1,0
+T2_timeout100,1,100,50,12058,50,0,0,0,618,6,100,100,0,0,0,0,5.823,52.546,106,106,0,1,0
+T3_crash_100,1,100,50,12058,50,1,0,0,451,2,100,101,0,1,1,0,3.449,52.009,102,102,0,1,0
+T4_crash_10,1,10,50,12058,50,1,0,0,457,2,100,121,20,1,1,0,2.291,11.023,102,102,0,1,0
+T5_quarantine,1,100,50,12058,50,1,0,1,324,2,40,81,0,1,1,40,3.849,50.391,43,42,0,1,0
+T6_nosync_must_fail,1,100,20,12058,50,0,1,0,205,2,40,40,0,0,0,0,0.000,0.000,16,42,24,0,0
+T7_watchdog,1,100,100000,12058,50,0,0,0,300,3,57,58,0,0,1,0,5.479,51.033,60,60,4,0,1

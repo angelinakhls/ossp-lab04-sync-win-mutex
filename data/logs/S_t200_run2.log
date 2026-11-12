@@ -1,0 +1,13 @@
+
+===== RESULT (config=S_t200 run=2) =====
+timeout=200 ms  ops/worker=100  hold=50 ms  crash=0  no-sync=0  no-recover=0  seed=1
+elapsed             : 1122 ms
+holder holds        : 11
+workers success     : 200 (P2=100, P3=100)
+workers attempts    : 200
+WAIT_TIMEOUT        : 0
+WAIT_ABANDONED      : 0
+recoveries          : 0   refused (structure unusable): 0
+avg wait (workers)  : 5.470 ms   max wait: 52.573 ms
+final counter       : 211   expected: 211
+INVARIANT VIOLATIONS: 0   => PASS

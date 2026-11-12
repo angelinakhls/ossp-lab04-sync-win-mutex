@@ -1,0 +1,13 @@
+
+===== RESULT (config=B_ind run=2) =====
+timeout=100 ms  ops/worker=670  hold=50 ms  crash=0  no-sync=0  no-recover=0  seed=12058
+elapsed             : 6832 ms
+holder holds        : 67
+workers success     : 1340 (P2=670, P3=670)
+workers attempts    : 1340
+WAIT_TIMEOUT        : 0
+WAIT_ABANDONED      : 0
+recoveries          : 0   refused (structure unusable): 0
+avg wait (workers)  : 5.140 ms   max wait: 52.830 ms
+final counter       : 1407   expected: 1407
+INVARIANT VIOLATIONS: 0   => PASS

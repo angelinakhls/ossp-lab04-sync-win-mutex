@@ -1,0 +1,13 @@
+
+===== RESULT (config=A_ind run=3) =====
+timeout=10 ms  ops/worker=670  hold=50 ms  crash=0  no-sync=0  no-recover=0  seed=12058
+elapsed             : 6939 ms
+holder holds        : 68
+workers success     : 1340 (P2=670, P3=670)
+workers attempts    : 1789
+WAIT_TIMEOUT        : 449
+WAIT_ABANDONED      : 0
+recoveries          : 0   refused (structure unusable): 0
+avg wait (workers)  : 3.247 ms   max wait: 11.703 ms
+final counter       : 1408   expected: 1408
+INVARIANT VIOLATIONS: 0   => PASS

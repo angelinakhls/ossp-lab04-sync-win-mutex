@@ -1,0 +1,11 @@
+{
+  "department": "информатики",
+  "group": "43503",
+  "full_name": "Хлус Ангелина Александровна",
+  "teacher": "Шабанович Роман Александрович",
+  "commit_hash": "",
+  "os": "Windows 11",
+  "cpu": "AMD RYZEN 7 4800h",
+  "compiler": "MinGW-w64 GCC 15.2.0 (CLion 2026.3), CMake, Release (-O3)",
+  "city_year": "Минск 2026"
+}

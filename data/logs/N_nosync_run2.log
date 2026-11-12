@@ -1,0 +1,13 @@
+
+===== RESULT (config=N_nosync run=2) =====
+timeout=100 ms  ops/worker=20  hold=50 ms  crash=0  no-sync=1  no-recover=0  seed=1
+elapsed             : 203 ms
+holder holds        : 2
+workers success     : 40 (P2=20, P3=20)
+workers attempts    : 40
+WAIT_TIMEOUT        : 0
+WAIT_ABANDONED      : 0
+recoveries          : 0   refused (structure unusable): 0
+avg wait (workers)  : 0.000 ms   max wait: 0.000 ms
+final counter       : 17   expected: 42
+INVARIANT VIOLATIONS: 17   => FAIL

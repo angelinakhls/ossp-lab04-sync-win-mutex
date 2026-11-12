@@ -1,0 +1,13 @@
+
+===== RESULT (config=C_ind run=1) =====
+timeout=100 ms  ops/worker=670  hold=50 ms  crash=1  no-sync=0  no-recover=0  seed=12058
+elapsed             : 3791 ms
+holder holds        : 2
+workers success     : 1340 (P2=670, P3=670)
+workers attempts    : 1341
+WAIT_TIMEOUT        : 0
+WAIT_ABANDONED      : 1
+recoveries          : 1   refused (structure unusable): 0
+avg wait (workers)  : 0.593 ms   max wait: 49.857 ms
+final counter       : 1342   expected: 1342
+INVARIANT VIOLATIONS: 0   => PASS

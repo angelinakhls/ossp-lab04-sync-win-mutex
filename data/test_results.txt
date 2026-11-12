@@ -1,0 +1,8 @@
+PASS  T1_timeout10
+PASS  T2_timeout100
+PASS  T3_crash_100
+PASS  T4_crash_10
+PASS  T5_quarantine
+PASS  T6_nosync_must_fail
+PASS  T7_watchdog
+Failed checks: 0
