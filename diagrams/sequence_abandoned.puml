@@ -1,0 +1,28 @@
+@startuml sequence_abandoned
+skinparam shadowing false
+skinparam defaultFontName "Liberation Serif"
+skinparam defaultFontSize 13
+skinparam monochrome true
+title Аварийное завершение Holder и обработка WAIT_ABANDONED
+
+participant "P1 Holder" as H
+participant "Mutex" as M
+participant "Shared Memory" as S
+participant "P2 Worker" as W
+
+H -> M : WaitForSingleObject
+M --> H : WAIT_OBJECT_0
+H -> S : dirty=1, owner=1
+H -> S : counter=tmp+1 (shadow не обновлён)
+H -> H : TerminateProcess (ReleaseMutex не вызван)
+destroy H
+W -> M : WaitForSingleObject(timeout)
+M --> W : WAIT_ABANDONED (владение передано)
+W -> S : state=CORRUPTED
+note right of W : использование структуры\nприостановлено
+W -> S : counter=shadow, dirty=0,\nowner=0, epoch++
+W -> S : state=OK
+W -> M : ReleaseMutex
+W -> M : WaitForSingleObject
+M --> W : WAIT_OBJECT_0 (штатная работа)
+@enduml

@@ -1,0 +1,31 @@
+@startuml activity_attempt
+skinparam shadowing false
+skinparam defaultFontName "Liberation Serif"
+skinparam defaultFontSize 13
+skinparam monochrome true
+title Алгоритм одной попытки доступа к структуре
+
+start
+:WaitForSingleObject(hMutex, timeout);
+switch (результат?)
+case (WAIT_OBJECT_0)
+  if (state == CORRUPTED?) then (да)
+    :blocked++\nотказ от использования;
+  else (нет)
+    :проверка инвариантов\n(owner==0, dirty==0, counter==shadow);
+    :dirty=1; чтение; работа; запись;\nshadow=counter; dirty=0;
+    :success++;
+  endif
+  :ReleaseMutex;
+case (WAIT_TIMEOUT)
+  :timeouts++\nпауза и повторная попытка;
+case (WAIT_ABANDONED)
+  :abandoned++; state=CORRUPTED;
+  :откат counter=shadow, dirty=0,\nowner=0, epoch++;
+  :state=OK; recoveries++;
+  :ReleaseMutex;
+case (WAIT_FAILED)
+  :журнал ошибки; завершение участника;
+endswitch
+stop
+@enduml

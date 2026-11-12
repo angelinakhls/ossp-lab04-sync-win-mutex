@@ -1,0 +1,33 @@
+@startuml arch
+skinparam shadowing false
+skinparam defaultFontName "Liberation Serif"
+skinparam defaultFontSize 13
+skinparam monochrome true
+skinparam nodesep 40
+skinparam ranksep 50
+title Архитектура: процессы и общие ресурсы
+
+rectangle "Родительский процесс\n(создание объектов, запуск,\nWaitForMultipleObjects,\nпроверка инвариантов)" as PAR
+
+rectangle "P1: Holder\nудерживает Mutex 50 мс;\nтест TerminateProcess" as P1
+rectangle "P2: Worker\nWait(timeout)" as P2
+rectangle "P3: Worker\nWait(timeout)" as P3
+
+queue "Event Start\n(Manual Reset)" as EVT
+queue "Named Mutex" as MTX
+database "Shared Memory:\nSharedData" as SHM
+
+PAR --> P1 : CreateProcess
+PAR --> P2 : CreateProcess
+PAR --> P3 : CreateProcess
+
+P1 --> MTX
+P2 --> MTX
+P3 --> MTX
+MTX -[hidden]down-> SHM
+P1 ..> SHM
+P2 ..> SHM
+P3 ..> SHM
+PAR ..> EVT : SetEvent
+PAR ..> SHM : итоговая проверка
+@enduml

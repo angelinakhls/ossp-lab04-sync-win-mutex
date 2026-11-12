@@ -1,0 +1,28 @@
+@startuml sequence_timeout
+skinparam shadowing false
+skinparam defaultFontName "Liberation Serif"
+skinparam defaultFontSize 13
+skinparam monochrome true
+title Взаимодействие при штатной работе: WAIT_OBJECT_0 и WAIT_TIMEOUT
+
+participant "P1 Holder" as H
+participant "Mutex" as M
+participant "Shared Memory" as S
+participant "P2 Worker" as W
+
+H -> M : WaitForSingleObject(1000)
+M --> H : WAIT_OBJECT_0
+H -> S : dirty=1, чтение counter
+note right of H : удержание 50 мс (Sleep)
+W -> M : WaitForSingleObject(timeout)
+alt timeout < остаток удержания (например 10 мс)
+  M --> W : WAIT_TIMEOUT
+  W -> W : timeouts++, пауза, повтор
+else timeout >= остаток удержания (например 100 мс)
+  H -> S : counter=tmp+1, shadow=counter, dirty=0
+  H -> M : ReleaseMutex
+  M --> W : WAIT_OBJECT_0
+  W -> S : проверка инвариантов, операция
+  W -> M : ReleaseMutex
+end
+@enduml

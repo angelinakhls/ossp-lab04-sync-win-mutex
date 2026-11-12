@@ -1,0 +1,6 @@
+build/
+*.exe
+*.obj
+__pycache__/
+report/*.docx
+report/*.pdf
